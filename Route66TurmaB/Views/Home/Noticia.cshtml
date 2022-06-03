@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Route66TurmaB.Models.Noticia>
+
+@{
+    ViewBag.Title = "Notícias";
+}
+
+<h2>Notícias</h2>
+
+<div>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+
+                @Html.ActionLink(item.Titulo, "MostraNoticia", "Home", new
+           {
+               @NoticiaId = item.NoticiaId,
+               @categoria = item.Categoria.ToLower(),
+               @titulo = item.Titulo.ToLower()
+           }, null);
+
+                <em>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </em>
+                <b>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </b>
+            </li>
+        }
+    </ul>
+</div>
